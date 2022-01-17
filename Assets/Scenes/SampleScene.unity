@@ -294,14 +294,114 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: -0.007460211, y: 0.72362286, z: -0.007822339, w: -0.69011104}
-  m_LocalPosition: {x: 2.3411543, y: 0.0543809, z: -0.63678235}
+  m_LocalRotation: {x: -0.062325366, y: 0.55858773, z: -0.04214608, w: -0.8260261}
+  m_LocalPosition: {x: 3.6653426, y: 0.34537894, z: -2.520105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &839747299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 839747303}
+  - component: {fileID: 839747302}
+  - component: {fileID: 839747301}
+  - component: {fileID: 839747300}
+  m_Layer: 0
+  m_Name: Blue Plan t fBm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &839747300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839747299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8907cd63536401991292e5a50baa0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xAngle: 0.87
+  yAngle: 0.92
+  zAngle: 1.27
+  speed: 2
+--- !u!23 &839747301
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839747299}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 889e79fbeeb4a4503acb03b21e94f065, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &839747302
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839747299}
+  m_Mesh: {fileID: 4300000, guid: fb9d736cb304c448b92d3afeb3a5ad32, type: 2}
+--- !u!4 &839747303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839747299}
+  m_LocalRotation: {x: 0.03968684, y: 0.57414246, z: 0.18714508, w: 0.79609185}
+  m_LocalPosition: {x: 0.279, y: -0.17100003, z: -2.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -50.265, y: -1050.665, z: -402.661}
 --- !u!1 &1917016575
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,14 +478,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917016575}
-  m_LocalRotation: {x: -0.10917964, y: 0.905849, z: -0.38434952, w: 0.1406875}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.74923825, y: -0.6422831, z: -0.1407508, w: -0.079397}
+  m_LocalPosition: {x: 0.168, y: -0.096, z: 0.662}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.051, y: 0.558, z: 0}
 --- !u!114 &1917016579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8907cd63536401991292e5a50baa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xAngle: 1.46
-  yAngle: 1.12
+  xAngle: 5.97
+  yAngle: 0
   zAngle: 0
-  speed: 4.37
+  speed: 1

@@ -17,19 +17,30 @@
     COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-Shader "TM/PlanetShader"
+Shader "TM/PlanetShader 2"
 {
     Properties
     {
         _UseBumpMap ("__Use Bump Map__", int) = 1
         _BumpMap ("Bumpmap",        2D) = "bump" {}
+
+        _UseGradTex ("__Use Grad Texture__", int) = 1
+        _GradTex ("Grad texture", 2D) = "white" {}
+
         _Contrast ("Contrast",      Range(0,5)) = 1.0
         _Brightness ("Brightness",  Range(0,5)) = 1.0
         _Glossiness ("Smoothness",  Range(0,1)) = 0.5
         _Metallic ("Metallic",      Range(0,1)) = 0.0
-        
-        _Scale ("Surface Scale", Range(0,100))   = 1.0
-        _Octaves("Surface Octaves", Range(1,50) ) = 8
+
+        [Header(Noise)]
+        _Scale ("Scale", Range(0,100))   = 1.0
+        _Octaves("Octaves", Range(1,50) ) = 8
+        _Lacunarity ("Lacunarity", Range(0,10)) = 2.0
+        _Gain ("Gain", Range(0,1)) = 0.5
+        _Amplitude ("Amplitude", Range(0,10)) = 0.5
+        _Frequency ("Frequency", Range(0,10)) = 1.0
+
+        [Header(Color)]
         _Color ("Surface Color", Color)    = (1,1,1,1)
         _SeaLevelColor ("SeaLevel Color", Color)    = (1,1,1,1)
         _Alpha("Surface Alpha", Range(0, 1.0))  = 1.0
@@ -51,10 +62,19 @@ Shader "TM/PlanetShader"
         #pragma surface surf Standard fullforwardshadows vertex:vert
         #pragma target 3.5
 
+        sampler2D _GradTex;
+
         float   _Contrast;
         float   _Brightness;
+
         float   _Scale;
         int     _Octaves;
+        float   _Lacunarity;
+        float   _Gain;
+        float   _Amplitude;
+        float   _Frequency;
+
+        int     _UseGradTex;
         float4  _Color;
         float4  _SeaLevelColor;
         float   _Alpha;
@@ -71,6 +91,7 @@ Shader "TM/PlanetShader"
         struct Input
         {
             float2 uv_BumpMap;
+            float2 uv_GradTex;
             float3 localPos;
             float3 viewDir;
             float4 worldPos;
@@ -118,6 +139,19 @@ Shader "TM/PlanetShader"
             return n;
         }
 
+        float fBM(float3 v, int octaves, float lacunarity, float gain = 0.5, float amplitude = 0.5, float frequency = 1.0)
+        {
+            float n = 0.0f;
+            for(int i=0; i<octaves; i++)
+            {
+                n += amplitude * noise3(v*frequency);
+                frequency *= lacunarity;
+                amplitude *= gain;
+            }
+            return n;
+        }
+
+
         float constast(float x, float gain) 
         {
             const float a = 0.5*pow(2.0*((x<0.5)?x:1.0-x), gain);
@@ -127,10 +161,23 @@ Shader "TM/PlanetShader"
         void surf(Input IN, inout SurfaceOutputStandard o)
         {
             float3 localPos = IN.localPos; 
-            float fNoise = fractal3(localPos, _Octaves, _Scale);
-            float surface = sin( localPos.x*1.295234f*localPos.y*(localPos.z*0.5342f) *_Scale + 1.0f/fNoise );
+            //float fNoise = fractal3(localPos, _Octaves, _Scale);
 
-            fixed4 nc = lerp(_SeaLevelColor, _Color, surface);
+            float fbm = fBM(localPos, _Octaves, _Lacunarity, _Gain, _Amplitude, _Frequency);
+
+//            float surface = sin( (1.0f-cos(localPos.x))*sin(localPos.y)*sin(localPos.z*0.342f) *_Scale + 1.0f/fNoise );
+            float surface = sin( (1.0f-cos(localPos.x))*sin(localPos.y)*sin(localPos.z*0.342f) *_Scale + 1.0f/fbm );
+
+            fixed4 nc = fixed4(1,1,0,1);
+
+            if (_UseGradTex)
+            {
+                float2 uv = float2(clamp(surface,0.0, 1.0),0.0);
+                nc = tex2D(_GradTex, uv);
+            }
+            else
+                nc = lerp(_SeaLevelColor, _Color, surface);
+
             nc.a = _Alpha;
 
             float3 normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
