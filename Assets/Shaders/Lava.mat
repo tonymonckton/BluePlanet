@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GradTex:
+        m_Texture: {fileID: 2800000, guid: 2743cc19cc13e4ac9a2e470b6f33db4c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -76,18 +80,19 @@ Material:
     - _OcclusionStrength: 1
     - _Octaves: 5.1
     - _Parallax: 0.02
-    - _RimPower: 3.43
+    - _RimPower: 3.24
     - _Scale: 150
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _UseBumpMap: 1
-    - _UseRimEffect: 1
+    - _UseBumpMap: 0
+    - _UseGradTex: 0
+    - _UseRimEffect: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.6084906, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _SeaLevelColor: {r: 0.8113208, g: 0.5576211, b: 0.24110004, a: 1}
   m_BuildTextureStacks: []

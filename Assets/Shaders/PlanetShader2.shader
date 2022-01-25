@@ -21,10 +21,12 @@ Shader "TM/PlanetShader 2"
 {
     Properties
     {
+        [MaterialToggle]
         _UseBumpMap ("__Use Bump Map__", int) = 1
         _BumpMap ("Bumpmap",        2D) = "bump" {}
 
-        _UseGradTex ("__Use Grad Texture__", int) = 1
+        [MaterialToggle]
+        _UseGradTex ("__Use Grad Texture__", int) = 0
         _GradTex ("Grad texture", 2D) = "white" {}
 
         _Contrast ("Contrast",      Range(0,5)) = 1.0
@@ -74,7 +76,7 @@ Shader "TM/PlanetShader 2"
         float   _Amplitude;
         float   _Frequency;
 
-        int     _UseGradTex;
+        float   _UseGradTex;
         float4  _Color;
         float4  _SeaLevelColor;
         float   _Alpha;
