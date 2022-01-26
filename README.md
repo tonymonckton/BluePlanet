@@ -1,3 +1,3 @@
-# code name plue planet
+# code name blue planet
 
 fBm planet generator
